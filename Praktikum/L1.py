@@ -1,39 +1,34 @@
-def profit_max(barang, ketersedian):
+def maximum_profit(barang, ketersedian):
 
-    max_harga = 0
-    data_propit = []
-    
+    # penampung data sementara
+    max_profit = 0
+    data_profit = []
+
     for x in range(ketersedian // barang[0]['terigu']): # looping barang ke 1
-        for y in range(ketersedian // barang[1]['terigu']): # looping batang ke 2
-            
+        for y in range(ketersedian // barang[1]['terigu']): # looping barang ke 2
+
             # cek jika semua jumlah terigu yang digunakan lebih dari 10
             # maka countinue
             if ((barang[0]['terigu'] * x) + (barang[1]['terigu'] * y)) > 10: 
                 continue
-            
-            # simpan total profit dari perulangan
+
+            # simpan total profit yanga di dapat pada perulangan saat ini
             profit = (barang[0]['harga'] * x) + (barang[1]['harga'] * y)
 
-            # cek jika profit lebih besar dari profit yang didapatkan sebelumnya
-            # dan simpan data tersebut
-            if profit > max_harga:
-                data_propit = [x, y]
-                max_harga = profit
+            # cek jika profit lebih besar dari max_profit yang didapatkan sebelumnya,
+            # simpan profit dan data yang didatapt
+            if profit > max_profit:
+                data_profit = [x, y]
+                max_profit = profit
 
-    return data_propit, profit
-    
+    return data_profit, profit
 
-cireng = {
-    'harga': 150_000,
-    'terigu': 4,
-}
-
-cimol = {
-    "nama": 'cimol',
-    'harga': 135_000,
-    'terigu': 2,
-}
-
-barang = [cireng, cimol]
 ketersedian = 10
-print(profit_max(barang, ketersedian))
+barang = [{'nama': 'Cireng', 'harga': 150_000, 'terigu': 4 }, 
+          {'nama': 'Cimol','harga': 135_000, 'terigu': 2}]
+jumlah_terigu, profit = maximum_profit(barang, ketersedian)
+
+print(f"Profit tertinggi yang di dapat Rp.{profit}")
+print("barang yang di dapat diproduksi: ")
+print(f"\t{barang[0]['nama']}: {jumlah_terigu[0]}")
+print(f"\t{barang[1]['nama']}: {jumlah_terigu[1]}")
