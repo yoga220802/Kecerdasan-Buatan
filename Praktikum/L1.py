@@ -7,9 +7,9 @@ def maximum_profit(barang, ketersedian):
     for x in range(ketersedian // barang[0]['terigu']): # looping barang ke 1
         for y in range(ketersedian // barang[1]['terigu']): # looping barang ke 2
 
-            # cek jika semua jumlah terigu yang digunakan lebih dari 10
+            # cek jika semua jumlah terigu yang digunakan lebih dari `ketersedian`
             # maka countinue
-            if ((barang[0]['terigu'] * x) + (barang[1]['terigu'] * y)) > 10: 
+            if ((barang[0]['terigu'] * x) + (barang[1]['terigu'] * y)) > ketersedian: 
                 continue
 
             # simpan total profit yanga di dapat pada perulangan saat ini
